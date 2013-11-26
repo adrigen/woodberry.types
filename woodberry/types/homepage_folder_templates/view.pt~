@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="woodberry.types">
+<body>
+Hello!
+<tal:comment tal:condition="nothing">
+    This is a sample view template. It will not be used for rendering the
+    content unless activated by creation of a view class with a matching name.
+</tal:comment>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+ 	 <section id="mosaic"><div class="column-container">
+	 	 <div class="column wlc-masonry">
+
+			<div tal:repeat="item context/@@folderListing"
+               class="feature-frame four-by-two">
+				<div tal:content="item/title" class="title">Who can come here</div>
+
+
+					<img  
+     tal:define=" item_object item/getObject;
+		scales item_object/@@images;
+                 thumbnail python: scales.scale('tile_image', width=296, height=136, direction='down');"
+     tal:condition="python:(item.image_size)=='2 x 1 (wide)'"
+     tal:attributes="src thumbnail/url;
+                     width thumbnail/width;
+                     height thumbnail/height;
+	  	     id item/image_size | nothing" />
+
+					<img 
+     tal:define=" item_object item/getObject;
+		scales item_object/@@images;
+                 thumbnail python: scales.scale('tile_image', width=136, height=296, direction='down');"
+     tal:condition="python:(item.image_size)=='1 x 2 (tall)'"
+     tal:attributes="src thumbnail/url;
+                     width thumbnail/width;
+                     height thumbnail/height;
+	  	     id item/image_size | nothing" />
+
+					<img  
+     tal:define=" item_object item/getObject;
+		scales item_object/@@images;
+                 thumbnail python: scales.scale('tile_image', width=296, height=296, direction='down');"
+     tal:condition="python:(item.image_size)=='2 x 2 (big box)'"
+     tal:attributes="src thumbnail/url;
+                     width thumbnail/width;
+                     height thumbnail/height;
+	  	     id item/image_size | nothing" />
+
+					<img  
+     tal:define="item_object item/getObject;
+		scales item_object/@@images;
+                 thumbnail python: scales.scale('tile_image', width=136, height=136, direction='down');"
+     tal:condition="python:(item.image_size)=='1 x 1 (small)'"
+     tal:attributes="src thumbnail/url;
+                     width thumbnail/width;
+                     height thumbnail/height;
+	  	     id item/image_size | nothing" />
+
+
+	 	 	</div>
+	 	</div>
+	 </section><!-- end of mosiac -->
+
+<div id="portal-sections">
+
+<tal:block tal:repeat="item context/@@folderListing">
+<section class="home-copy clearfix"
+ tal:define="oddrow repeat/item/odd"
+tal:attributes="class python:'odd' if oddrow else 'even'"
+                    >
+
+
+         <div class="column-container">
+	 <h2 tal:content="item/title" tal:condition="not: python:(item.portal_type)=='woodberry.types.fullwidthsectionwithnotitle'">Section Title</h2>
+<tal:block tal:condition="item/content|nothing" tal:replace="structure item/content/output"/>
+	 
+
+	 <div class="colA" tal:condition="item/column_1|nothing" tal:replace="structure item/column_1/output">Column A content</div>
+	 <div class="colB" tal:condition="item/column_2|nothing" tal:replace="structure item/column_2/output">Column B content</div>
+
+</div></section>
+ </tal:block></div>
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

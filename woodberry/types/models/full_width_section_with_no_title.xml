@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<model xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="title" type="zope.schema.TextLine">
+      <description>This will show on the image tile only</description>
+      <title>Title</title>
+    </field>
+    <field name="content" type="plone.app.textfield.RichText">
+      <description>Please make this a reall short overview. Feel free to add links to other pages which explain your concept in full. </description>
+      <title>Content</title>
+    </field>
+    <fieldset name="image" label="Image">
+      <field name="tile_image" type="plone.namedfile.field.NamedBlobImage">
+        <description>This is the image which will appear in the grid at the top of the page.</description>
+        <title>Tile image</title>
+      </field>
+      <field name="image_size" type="zope.schema.Choice">
+        <description>Choose the aspect ratio for this image</description>
+        <title>Image Size</title>
+        <values>
+          <element>2 x 1 (wide)</element>
+          <element>1 x 2 (tall)</element>
+          <element>1 x 1 (small)</element>
+          <element>2 x 2 (big box)</element>
+        </values>
+      </field>
+    </fieldset>
+</schema>
+</model>
