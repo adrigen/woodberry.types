@@ -22,7 +22,8 @@ Hello!
                class="feature-frame four-by-two">
 				<div tal:content="item/title" class="title">Who can come here</div>
 
-
+					<a 	tal:define="section_id item/id"
+						tal:attributes="href python:'#' + section_id">
 					<img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
@@ -62,7 +63,7 @@ Hello!
                      width thumbnail/width;
                      height thumbnail/height;
 	  	     id item/image_size | nothing" />
-
+					</a>
 
 	 	 	</div>
 	 	</div>
@@ -73,7 +74,7 @@ Hello!
 <tal:block tal:repeat="item context/@@folderListing">
 <section class="home-copy clearfix"
  tal:define="oddrow repeat/item/odd"
-tal:attributes="class python:'odd' if oddrow else 'even'"
+tal:attributes="class python:'odd' if oddrow else 'even'; id item/id"
                     >
 
 

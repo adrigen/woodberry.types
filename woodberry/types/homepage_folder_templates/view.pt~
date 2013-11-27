@@ -22,7 +22,8 @@ Hello!
                class="feature-frame four-by-two">
 				<div tal:content="item/title" class="title">Who can come here</div>
 
-
+					<a 	tal:define="section_id item/id"
+						tal:attributes="href python:'#' + item/id">
 					<img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
@@ -62,7 +63,7 @@ Hello!
                      width thumbnail/width;
                      height thumbnail/height;
 	  	     id item/image_size | nothing" />
-
+					</a>
 
 	 	 	</div>
 	 	</div>
@@ -73,7 +74,7 @@ Hello!
 <tal:block tal:repeat="item context/@@folderListing">
 <section class="home-copy clearfix"
  tal:define="oddrow repeat/item/odd"
-tal:attributes="class python:'odd' if oddrow else 'even'"
+tal:attributes="class python:'odd' if oddrow else 'even'; id item/id"
                     >
 
 
@@ -82,8 +83,8 @@ tal:attributes="class python:'odd' if oddrow else 'even'"
 <tal:block tal:condition="item/content|nothing" tal:replace="structure item/content/output"/>
 	 
 
-	 <div class="colA" tal:condition="item/column_1|nothing" tal:replace="structure item/column_1/output">Column A content</div>
-	 <div class="colB" tal:condition="item/column_2|nothing" tal:replace="structure item/column_2/output">Column B content</div>
+	 <div class="colA" tal:condition="item/column_1|nothing" tal:content="structure item/column_1/output">Column A content</div>
+	 <div class="colB" tal:condition="item/column_2|nothing" tal:content="structure item/column_2/output">Column B content</div>
 
 </div></section>
  </tal:block></div>
