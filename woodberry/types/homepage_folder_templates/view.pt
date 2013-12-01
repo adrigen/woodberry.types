@@ -79,8 +79,11 @@ tal:attributes="class python:'home-copy clearfix odd ' + item.portal_type[16:] i
 
 
          <div class="column-container">
+
+	<div class="content" tal:condition="item/content|nothing" tal:content="structure item/content/output"/>
+
 	 <h2 tal:content="item/title" tal:condition="not: python:(item.portal_type)=='woodberry.types.fullwidthsectionwithnotitle'">Section Title</h2>
-<tal:block tal:condition="item/content|nothing" tal:replace="structure item/content/output"/>
+
 	 
 
 	 <div class="colA" tal:condition="item/column_1|nothing" tal:content="structure item/column_1/output">Column A content</div>
