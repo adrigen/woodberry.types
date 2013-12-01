@@ -15,66 +15,66 @@ Hello!
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
- 	 <section id="mosaic"><div class="column-container">
+ 
+
+<div id="portal-sections">
+
+	 <section id="mosaic"><div class="column-container">
 	 	 <div class="column wlc-masonry">
 
-			<div tal:repeat="item context/@@folderListing"
-               class="feature-frame four-by-two">
-				<div tal:content="item/title" class="title">Who can come here</div>
-
+			<tal:block tal:repeat="item context/@@folderListing">
 					<a 	tal:define="section_id item/id"
 						tal:attributes="href python:'#' + section_id">
-					<img  
+					<div class="feature-frame four-by-two"
+						tal:condition="python:(item.image_size)=='2 x 1 (wide)'">
+				<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
                  thumbnail python: scales.scale('tile_image', width=296, height=136, direction='down');"
-     tal:condition="python:(item.image_size)=='2 x 1 (wide)'"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
-                     height thumbnail/height;
-	  	     id item/image_size | nothing" />
+                     height thumbnail/height" /></div>
 
-					<img 
+					<div class="feature-frame two-by-four"
+						tal:condition="python:(item.image_size)=='1 x 2 (tall)'">
+				<div tal:content="item/title" class="title">Who can come here</div><img 
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
                  thumbnail python: scales.scale('tile_image', width=136, height=296, direction='down');"
-     tal:condition="python:(item.image_size)=='1 x 2 (tall)'"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
-                     height thumbnail/height;
-	  	     id item/image_size | nothing" />
+                     height thumbnail/height" /></div>
 
-					<img  
+					<div class="feature-frame four-by-four"
+						tal:condition="python:(item.image_size)=='2 x 2 (big box)'">
+				<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
                  thumbnail python: scales.scale('tile_image', width=296, height=296, direction='down');"
-     tal:condition="python:(item.image_size)=='2 x 2 (big box)'"
-     tal:attributes="src thumbnail/url;
+    tal:attributes="src thumbnail/url;
                      width thumbnail/width;
-                     height thumbnail/height;
-	  	     id item/image_size | nothing" />
+                     height thumbnail/height" /></div>
 
-					<img  
+					<div class="feature-frame two-by-two"
+						tal:condition="python:(item.image_size)=='1 x 1 (small)'">
+				<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define="item_object item/getObject;
 		scales item_object/@@images;
                  thumbnail python: scales.scale('tile_image', width=136, height=136, direction='down');"
      tal:condition="python:(item.image_size)=='1 x 1 (small)'"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
-                     height thumbnail/height;
-	  	     id item/image_size | nothing" />
+                     height thumbnail/height" /></div>
 					</a>
 
-	 	 	</div>
+	 	 	</tal:block>
 	 	</div>
 	 </section><!-- end of mosiac -->
 
-<div id="portal-sections">
-
 <tal:block tal:repeat="item context/@@folderListing">
-<section class="home-copy clearfix"
+<section 
  tal:define="oddrow repeat/item/odd"
-tal:attributes="class python:'odd' if oddrow else 'even'; id item/id"
+tal:attributes="class python:'home-copy clearfix odd ' + item.portal_type[16:] if oddrow else 'even home-copy clearfix' + item.portal_type[16:]; id item/id; "
                     >
 
 

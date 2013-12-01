@@ -12,4 +12,8 @@ woodberry.types.egg-info/paster_plugins.txt
 woodberry.types.egg-info/requires.txt
 woodberry.types.egg-info/top_level.txt
 woodberry/types/__init__.py
+woodberry/types/full_width_section.py
+woodberry/types/full_width_section_with_no_title.py
+woodberry/types/homepage_folder.py
 woodberry/types/tests.py
+woodberry/types/two_column_section.py
