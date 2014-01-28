@@ -24,55 +24,66 @@ Hello!
 
 			<tal:block tal:repeat="item context/@@folderListing">
 					<a 	tal:define="section_id item/id"
-						tal:attributes="href python:'#' + section_id">
-					<div class="feature-frame four-by-two"
-						tal:condition="python:(item.image_size)=='2 x 1 (wide)'">
-				<div tal:content="item/title" class="title">Who can come here</div><img  
+						tal:attributes="href python:'..#' + section_id"
+						class="anchorLink">
+					<div tal:omit-tag="" 
+						tal:condition="item/image_size|nothing"
+						comment="This tag will be removed">
+						<div class="feature-frame four-by-two"
+						tal:condition="python:(item.image_size)=='2 x 1 (wide)' ">
+							<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
-                 thumbnail python: scales.scale('tile_image', width=296, height=136, direction='down');"
+                 thumbnail python: scales.scale('tile_image', width=306, height=136, direction='down');"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
                      height thumbnail/height" /></div>
 
-					<div class="feature-frame two-by-four"
+						<div class="feature-frame two-by-four"
 						tal:condition="python:(item.image_size)=='1 x 2 (tall)'">
-				<div tal:content="item/title" class="title">Who can come here</div><img 
+							<div tal:content="item/title" class="title">Who can come here</div><img 
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
-                 thumbnail python: scales.scale('tile_image', width=136, height=296, direction='down');"
+                 thumbnail python: scales.scale('tile_image', width=146, height=296, direction='down');"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
                      height thumbnail/height" /></div>
 
-					<div class="feature-frame four-by-four"
+						<div class="feature-frame four-by-four"
 						tal:condition="python:(item.image_size)=='2 x 2 (big box)'">
-				<div tal:content="item/title" class="title">Who can come here</div><img  
+							<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define=" item_object item/getObject;
 		scales item_object/@@images;
-                 thumbnail python: scales.scale('tile_image', width=296, height=296, direction='down');"
+                 thumbnail python: scales.scale('tile_image', width=306, height=296, direction='down');"
     tal:attributes="src thumbnail/url;
                      width thumbnail/width;
                      height thumbnail/height" /></div>
 
-					<div class="feature-frame two-by-two"
+						<div class="feature-frame two-by-two"
 						tal:condition="python:(item.image_size)=='1 x 1 (small)'">
-				<div tal:content="item/title" class="title">Who can come here</div><img  
+							<div tal:content="item/title" class="title">Who can come here</div><img  
      tal:define="item_object item/getObject;
 		scales item_object/@@images;
-                 thumbnail python: scales.scale('tile_image', width=136, height=136, direction='down');"
+                 thumbnail python: scales.scale('tile_image', width=146, height=136, direction='down');"
      tal:condition="python:(item.image_size)=='1 x 1 (small)'"
      tal:attributes="src thumbnail/url;
                      width thumbnail/width;
                      height thumbnail/height" /></div>
+
+
+					</div><!--end omit-->
+
 					</a>
+						<div class="feature-frame six-by-four"
+						tal:condition="python:(item.portal_type)=='woodberry.types.video'"><iframe src="//player.vimeo.com/video/82154370?&color=EE7B2B" height="100%" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						</div>
 
 	 	 	</tal:block>
 	 	</div>
 	 </section><!-- end of mosiac -->
 
 <tal:block tal:repeat="item context/@@folderListing">
-<section 
+<section tal:condition="not: python:(item.portal_type)=='woodberry.types.video'"
  tal:define="oddrow repeat/item/odd"
 tal:attributes="class python:'home-copy clearfix odd ' + item.portal_type[16:] if oddrow else 'even home-copy clearfix ' + item.portal_type[16:]; id item/id; "
                     >

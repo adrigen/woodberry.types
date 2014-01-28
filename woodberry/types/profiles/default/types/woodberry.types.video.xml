@@ -1,27 +1,22 @@
 <?xml version="1.0"?>
-<object name="woodberry.types.homepagefolder"
+<object name="woodberry.types.video"
    meta_type="Dexterity FTI"
    i18n:domain="woodberry.types" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">Homepage Folder</property>
+  <property name="title" i18n:translate="">Video</property>
   <property name="description"
-    i18n:translate="">Contains the sections of the homepage</property>
-  <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
-  <property name="factory">woodberry.types.homepagefolder</property>
-  <property name="global_allow">False</property>
+    i18n:translate="">Vimeo video for homepage grid of pictures</property>
+  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
+  <property name="factory">woodberry.types.video</property>
+  <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-      <element value="woodberry.types.fullwidthsectionwithnotitle" />
-      <element value="woodberry.types.fullwidthsection" />
-      <element value="woodberry.types.twocolumnsection" />
-      <element value="woodberry.types.video" />
-  </property>
+  <property name="allowed_content_types" />
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">woodberry.types.homepage_folder.IHomepageFolder</property>
-  <property name="klass">woodberry.types.homepage_folder.HomepageFolder</property>
+  <property name="schema">woodberry.types.video.IVideo</property>
+  <property name="klass">woodberry.types.video.Video</property>
 
   <property name="behaviors">
      <element value="plone.app.content.interfaces.INameFromTitle" />

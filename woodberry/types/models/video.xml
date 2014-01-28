@@ -1,0 +1,8 @@
+<model xmlns:security="http://namespaces.plone.org/supermodel/security" xmlns:marshal="http://namespaces.plone.org/supermodel/marshal" xmlns:form="http://namespaces.plone.org/supermodel/form" xmlns="http://namespaces.plone.org/supermodel/schema">
+  <schema>
+    <field name="vimeoNumber" type="zope.schema.TextLine">
+      <description>Get the number from the Vimeo video's url. e.g. http://vimeo.com/82154370 becomes 82154370</description>
+      <title>Vimeo Number</title>
+    </field>
+  </schema>
+</model>

@@ -8,6 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="woodberry.types.video" meta_type="Dexterity FTI" />
   <object name="woodberry.types.homepagefolder" meta_type="Dexterity FTI" />
   <object name="woodberry.types.fullwidthsectionwithnotitle" meta_type="Dexterity FTI" />
   <object name="woodberry.types.fullwidthsection" meta_type="Dexterity FTI" />
