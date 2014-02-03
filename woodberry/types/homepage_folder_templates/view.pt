@@ -24,8 +24,8 @@ Hello!
 
 			<tal:block tal:repeat="item context/@@folderListing">
 					<a 	tal:define="section_id item/id"
-						tal:attributes="href python:'..#' + section_id"
-						class="scroll">
+						tal:attributes="href python:'#' + section_id"
+						class="anchorLink">
 					<div tal:omit-tag="" 
 						tal:condition="item/image_size|nothing"
 						comment="This tag will be removed">
@@ -75,7 +75,7 @@ Hello!
 
 					</a>
 						<div class="feature-frame six-by-four"
-						tal:condition="python:(item.portal_type)=='woodberry.types.video'"><iframe src="//player.vimeo.com/video/82154370?&color=EE7B2B" height="100%" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						tal:condition="python:(item.portal_type)=='woodberry.types.video'"><iframe src="//player.vimeo.com/video/82144192?&color=EE7B2B" height="100%" width="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						</div>
 
 	 	 	</tal:block>
